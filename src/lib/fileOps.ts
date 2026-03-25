@@ -1,9 +1,7 @@
 import { save, open } from "@tauri-apps/plugin-dialog";
 import { readTextFile, writeTextFile } from "@tauri-apps/plugin-fs";
-import type {
-  ExcalidrawElement,
-  AppState,
-} from "@excalidraw/excalidraw/types";
+import type { AppState } from "@excalidraw/excalidraw/types";
+import type { ExcalidrawElement } from "@excalidraw/excalidraw/element/types";
 
 export interface ExcalidrawFile {
   type: "excalidraw";
@@ -30,7 +28,7 @@ function serialize(
     elements,
     appState: {
       viewBackgroundColor: appState.viewBackgroundColor ?? "#ffffff",
-      gridSize: appState.gridSize ?? null,
+      gridSize: appState.gridSize ?? 20,
     },
   };
   return JSON.stringify(file, null, 2);

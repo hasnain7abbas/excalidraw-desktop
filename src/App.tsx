@@ -1,10 +1,7 @@
 import { Excalidraw, MainMenu } from "@excalidraw/excalidraw";
 import "@excalidraw/excalidraw/index.css";
-import type {
-  ExcalidrawImperativeAPI,
-  ExcalidrawElement,
-  AppState,
-} from "@excalidraw/excalidraw/types";
+import type { ExcalidrawImperativeAPI, AppState } from "@excalidraw/excalidraw/types";
+import type { ExcalidrawElement } from "@excalidraw/excalidraw/element/types";
 import { useRef, useState, useCallback, useEffect } from "react";
 import { listen } from "@tauri-apps/api/event";
 import { saveToDisk, openFromDisk } from "./lib/fileOps";
@@ -93,7 +90,7 @@ export default function App() {
   return (
     <div style={{ width: "100vw", height: "100vh" }}>
       <Excalidraw
-        ref={(api) => { apiRef.current = api; }}
+        excalidrawAPI={(api) => { apiRef.current = api; }}
         onChange={handleChange}
         name={title}
       >
